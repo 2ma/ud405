@@ -9,10 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * TODO: Start here
- *
+ * <p>
  * In this exercise we have a project that draws a number of concentric rectangles as specified in
  * the COILS constant. The space between the rectangles is given by xStep and yStep.
- *
+ * <p>
  * The rectangles are drawn using four lines between five points. Your task is to adjust the first
  * and last point such that each rectangle turns into a coil that meets up with the neighboring
  * coils inside and outside of it.
@@ -21,7 +21,7 @@ import com.badlogic.gdx.math.Vector2;
 public class DrawASpiral extends ApplicationAdapter {
 
     // How many rectangles/coils to draw
-    private static final int COILS = 20;
+    private static final int COILS = 10;
     ShapeRenderer shapeRenderer;
 
     @Override
@@ -52,14 +52,12 @@ public class DrawASpiral extends ApplicationAdapter {
             int xOffset = xStep * i;
             int yOffset = yStep * i;
 
-            // TODO: Make this coil reach back to the outer coil
-            Vector2 point1 = new Vector2(xOffset, yOffset);
+            Vector2 point1 = new Vector2(xOffset - xStep, yOffset);
             Vector2 point2 = new Vector2(screenWidth - xOffset, yOffset);
             Vector2 point3 = new Vector2(screenWidth - xOffset, screenHeight - yOffset);
             Vector2 point4 = new Vector2(xOffset, screenHeight - yOffset);
 
-            // TODO: Make this coil stop before connecting back to itself
-            Vector2 point5 = new Vector2(xOffset, yOffset);
+            Vector2 point5 = new Vector2(xOffset, yOffset + yStep);
 
             shapeRenderer.line(point1, point2);
             shapeRenderer.line(point2, point3);
@@ -69,5 +67,3 @@ public class DrawASpiral extends ApplicationAdapter {
         shapeRenderer.end();
     }
 }
-
-// TODO: Challenge - Add truncated corners to the spiral
