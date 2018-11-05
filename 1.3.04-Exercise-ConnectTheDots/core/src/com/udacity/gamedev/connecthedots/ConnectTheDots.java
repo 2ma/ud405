@@ -43,8 +43,6 @@ public class ConnectTheDots extends ApplicationAdapter {
     }
 
     /**
-     * TODO: Complete this function to translate Array<Vector2> to float[]
-     *
      * The first problem is that the dot positions we have to work with are in an array of vectors,
      * and polyLine wants a flat array of floats. We've set up the array of floats for you, now all
      * you need to do is iterate over the Array of vectors, and put the x and y components into the
@@ -54,6 +52,11 @@ public class ConnectTheDots extends ApplicationAdapter {
     private float[] vector2ArrayToFloatArray(Array<Vector2> dots) {
 
         float[] floatDots = new float[dots.size * 2];
+        int i = 0;
+        for (Vector2 dot : dots) {
+            floatDots[i++] = dot.x;
+            floatDots[i++] = dot.y;
+        }
 
         return floatDots;
     }
@@ -80,12 +83,8 @@ public class ConnectTheDots extends ApplicationAdapter {
         }
         spriteBatch.end();
 
-        // TODO: Start a batch with Shapetype.Line
-
-        // TODO: Draw a polyline using the dot positions as a float array
-
-        // TODO: End the batch
-
-
+        shapeRenderer.begin(ShapeType.Line);
+        shapeRenderer.polyline(floatDots);
+        shapeRenderer.end();
     }
 }
