@@ -8,8 +8,6 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 /*
 
-TODO: Start here
-
 The Dragon Curve is a fractal made by a single line. It is formed of a series of turns, which can be constructed in the following way:
 
 0: L
